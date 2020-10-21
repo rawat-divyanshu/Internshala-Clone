@@ -3,6 +3,7 @@ import { Container, Grid, Paper, Button, Tab, Tabs } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 import SingleApplicationComponent from "./Sections/SingleApplicationComponent";
+import { getAllApplications } from "./AllJobsHelper";
 
 const useStyles = makeStyles((theme) => ({
   jobTitle: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 const application_received = {
   data: [
     {
-      id:"1",
+      id: "1",
       Name: "Nitesh garg",
       Location: "India",
       Applied_Date: "1 day ago",
@@ -62,7 +63,7 @@ const application_received = {
       ],
     },
     {
-      id:"2",
+      id: "2",
       Name: "Nitesh garg",
       Location: "India",
       Applied_Date: "1 day ago",
@@ -97,7 +98,7 @@ const application_received = {
       ],
     },
     {
-      id:"3",
+      id: "3",
       Name: "Nitesh garg",
       Location: "India",
       Applied_Date: "1 day ago",
@@ -132,7 +133,7 @@ const application_received = {
       ],
     },
     {
-      id:"4",
+      id: "4",
       Name: "Nitesh garg",
       Location: "India",
       Applied_Date: "1 day ago",
@@ -159,6 +160,23 @@ const application_received = {
 const AllJobsPage = () => {
   const classes = useStyles();
   const [currentTab, setCurrentTab] = React.useState(0);
+
+  React.useEffect(() => {
+    const type = "internship";
+    const id = 14;
+    const companyId = 6;
+    const fetchData = async () => {
+      const getDataStatus = await getAllApplications(type, id, companyId);
+
+      if (getDataStatus && getDataStatus.status) {
+        console.log(getDataStatus.data.ApplicationsList);
+      } else {
+        console.log("Kuch toh Locha Hai");
+      }
+    };
+    fetchData();
+  });
+
   const handleTabChange = (event, newValue) => {
     setCurrentTab(newValue);
   };

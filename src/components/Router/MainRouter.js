@@ -13,6 +13,7 @@ import ViewInternship from "./../ui/ViewOpening/Internship/ViewInternship";
 import ApplyJob from "./../ui/ApplyPage/ApplyJob/ApplyJob";
 import AdminRoute from "./PrivateRoutes/AdminRoute";
 import HomeRoute from "./PrivateRoutes/HomeRoute";
+import AllJobsPage from "./../ui/AllJobsPages/AllJobsPage";
 
 const MainRouter = () => {
   return (
@@ -39,6 +40,7 @@ const MainRouter = () => {
       <Route exact path="/jobs/" component={ListJobsPage} />
       <Route exact path="/resume/:id" component={Resume} />
       <Route exact path="/apply/:type/:id" component={ApplyJob} />
+      <Route exact path="/applications/" component={AllJobsPage} />
     </Switch>
   );
 };
